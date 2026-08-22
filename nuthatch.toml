@@ -1,0 +1,37 @@
+[nest]
+name = "omen-gnosis"
+chain = "gnosis"
+chain_id = 100
+rpc_urls = [
+    "https://rpc.gnosischain.com",
+    "https://rpc.gnosis.gateway.fm",
+]
+schema_version = 1
+block_timestamps = true
+
+# The factory. Its own ABI declares six events and this address emits exactly one of them. The four
+# FPMM trade events belong to the children (the Solidity that builds a market maker imports them),
+# and `CloneCreated` - inherited from the CloneFactory base - is never emitted at all: measured zero
+# from this address over 5,000,000 blocks, and zero anywhere on Gnosis. Both were dropped rather
+# than left to stand up five permanently empty tables.
+[[contracts]]
+alias = "factory"
+address = "0x9083a2b699c0a4ad06f63580bde2635d26a3eef0"
+start_block = 11830428
+abi = "abis/omen-factory.json"
+
+# Every market maker the factory has ever cloned. They share tables (fpmm__f_p_m_m_buy, …),
+# distinguished by the implicit `address` column.
+[[templates]]
+name = "fpmm"
+abi = "abis/fpmm.json"
+
+# `FixedProductMarketMakerCreation` carries the new market maker in `fixedProductMarketMaker`. It is
+# the only creation signal this factory gives: `CloneCreated` would have been the generic
+# alternative, and it never fires, so there is no second route to the same address.
+[[factories]]
+watch = "factory"
+event = "FixedProductMarketMakerCreation"
+child_param = "fixedProductMarketMaker"
+template = "fpmm"
+start = 11830428

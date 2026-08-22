@@ -1,0 +1,39 @@
+[
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "name": "creator",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "fixedProductMarketMaker",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "conditionalTokens",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "collateralToken",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "name": "conditionIds",
+        "type": "bytes32[]"
+      },
+      {
+        "indexed": false,
+        "name": "fee",
+        "type": "uint256"
+      }
+    ],
+    "name": "FixedProductMarketMakerCreation",
+    "type": "event"
+  }
+]

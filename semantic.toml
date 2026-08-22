@@ -1,0 +1,113 @@
+# semantic.toml - what this nest's data *means* (RFC-0016). Read by the MCP `schema`
+# tool, the admin UI, and the scaffolded skill. Edit descriptions freely; the
+# `[table.*.footguns]` are DERIVED from the ABI and regenerated - leave them be.
+
+schema_version = 1
+
+[nest]
+description = "The `omen-gnosis` nest on gnosis. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.factory__fixed_product_market_maker_creation]
+description = "`FixedProductMarketMakerCreation(address,address,address,address,bytes32[],uint256)` events emitted by the `factory` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per FixedProductMarketMakerCreation(address,address,address,address,bytes32[],uint256) event"
+
+[table.factory__fixed_product_market_maker_creation.columns]
+collateralToken = "The `collateralToken` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+conditionIds = "The `conditionIds` bytes32[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+conditionalTokens = "The `conditionalTokens` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+creator = "The `creator` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+fee = "The `fee` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+fixedProductMarketMaker = "The `fixedProductMarketMaker` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.factory__fixed_product_market_maker_creation.footguns]
+big_ints = ["fee"]
+overflows_dec = ["fee"]
+
+[table.fpmm__f_p_m_m_buy]
+description = "`FPMMBuy(address,uint256,uint256,uint256,uint256)` events emitted by the `fpmm` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per FPMMBuy(address,uint256,uint256,uint256,uint256) event"
+
+[table.fpmm__f_p_m_m_buy.columns]
+buyer = "The `buyer` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+feeAmount = "The `feeAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+investmentAmount = "The `investmentAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+outcomeIndex = "The `outcomeIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+outcomeTokensBought = "The `outcomeTokensBought` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.fpmm__f_p_m_m_buy.footguns]
+big_ints = [
+    "investmentAmount",
+    "feeAmount",
+    "outcomeIndex",
+    "outcomeTokensBought",
+]
+overflows_dec = [
+    "investmentAmount",
+    "feeAmount",
+    "outcomeIndex",
+    "outcomeTokensBought",
+]
+
+[table.fpmm__f_p_m_m_funding_added]
+description = "`FPMMFundingAdded(address,uint256[],uint256)` events emitted by the `fpmm` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per FPMMFundingAdded(address,uint256[],uint256) event"
+
+[table.fpmm__f_p_m_m_funding_added.columns]
+amountsAdded = "The `amountsAdded` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+funder = "The `funder` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sharesMinted = "The `sharesMinted` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.fpmm__f_p_m_m_funding_added.footguns]
+big_ints = ["sharesMinted"]
+overflows_dec = ["sharesMinted"]
+
+[table.fpmm__f_p_m_m_funding_removed]
+description = "`FPMMFundingRemoved(address,uint256[],uint256,uint256)` events emitted by the `fpmm` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per FPMMFundingRemoved(address,uint256[],uint256,uint256) event"
+
+[table.fpmm__f_p_m_m_funding_removed.columns]
+amountsRemoved = "The `amountsRemoved` uint256[] parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+collateralRemovedFromFeePool = "The `collateralRemovedFromFeePool` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+funder = "The `funder` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+sharesBurnt = "The `sharesBurnt` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.fpmm__f_p_m_m_funding_removed.footguns]
+big_ints = [
+    "collateralRemovedFromFeePool",
+    "sharesBurnt",
+]
+overflows_dec = [
+    "collateralRemovedFromFeePool",
+    "sharesBurnt",
+]
+
+[table.fpmm__f_p_m_m_sell]
+description = "`FPMMSell(address,uint256,uint256,uint256,uint256)` events emitted by the `fpmm` contract. (seeded from the ABI - edit semantic.toml to improve this)"
+grain = "one row per FPMMSell(address,uint256,uint256,uint256,uint256) event"
+
+[table.fpmm__f_p_m_m_sell.columns]
+feeAmount = "The `feeAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+outcomeIndex = "The `outcomeIndex` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+outcomeTokensSold = "The `outcomeTokensSold` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+returnAmount = "The `returnAmount` uint256 parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+seller = "The `seller` address parameter. (seeded from the ABI - edit semantic.toml to improve this)"
+
+[table.fpmm__f_p_m_m_sell.footguns]
+big_ints = [
+    "returnAmount",
+    "feeAmount",
+    "outcomeIndex",
+    "outcomeTokensSold",
+]
+overflows_dec = [
+    "returnAmount",
+    "feeAmount",
+    "outcomeIndex",
+    "outcomeTokensSold",
+]
+
+[view]
+
+# Authored views (views/*.sql) are described here so the MCP/`/schema` can render them:
+# [view.your_view_name]
+# description = "What this derivation computes."
