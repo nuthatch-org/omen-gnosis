@@ -1,6 +1,6 @@
 # omen-gnosis
 
-A [nuthatch](https://github.com/nightswatchhq/nuthatch) nest: **Omen prediction markets on Gnosis**.
+A [nuthatch](https://github.com/nuthatch-org/nuthatch) nest: **Omen prediction markets on Gnosis**.
 
 Every fixed-product market maker Omen's factory has ever cloned, and the trades on them: buys, sells and liquidity funding.
 
@@ -22,7 +22,7 @@ One binary, one config file, no graph-node, no gateway, no query fees.
 ## Run it
 
 ```sh
-nuthatch init --from https://github.com/nightswatchhq/omen-gnosis
+nuthatch init --from https://github.com/nuthatch-org/omen-gnosis
 cd omen-gnosis
 nuthatch dev --dir . --backfill 50000 --seal-direct
 nuthatch sql --dir . "SELECT count(*) FROM \"factory__fixed_product_market_maker_creation\""
